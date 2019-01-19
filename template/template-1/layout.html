@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<title>%title%</title>
+		<meta charset="utf-8">
+		
+		<link rel="stylesheet" href="template-1/assets/css/style.css" type="text/css" media="screen">
+		<link href="template-1/assets/css/animate.css" rel="stylesheet">
+		
+		<script src="template-1/assets/js/jquery.min.js"></script>
+		<script src="template-1/assets/js/functions.js"></script>
+		<script src="template-1/assets/js/objects.js"></script>
+		<script src="template-1/assets/js/main.js"></script>
+		
+		<link rel="icon" href="/favicon.ico" type="image/x-icon" />
+		<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+	</head>
+	
+	<body>
+		<header>
+			<div class="wrapper960px">
+				<a href="/" class="logo"></a>
+				<nav>
+					<ul id="top-menu">
+						<li class="%main_active%"><a href="/">Главная</a></li>
+						<li class="%faq_active%"><a href="/faq">FAQ</a></li>
+						<li class="%rules_active%"><a href="/rules">Правила</a></li>
+						<li class="%reg_active%"><a href="/reg">Регистрация</a></li>
+						<li class="%signin_active%"><a href="/signin">Вход</a></li>
+					</ul>
+				</nav>
+			</div>
+		</header>
+		
+		<div id="content">
+			<div class="error wrapper textCenterer" style="display: %error_visibility%">
+				%error_text%
+			</div>
+		
+%content%
+		
+		</div>
+
+<div class="modal-fade" id="notice-fade" onclick="toggleDisplayNotice('notice-fade');" >
+	<div class="notice" onclick="event.stopPropagation()">
+		<div class="modal-content">
+			<span id="notice-text"></span>
+			
+			<div class="textCenterer">
+				<div class="darkBtn smallBtn noFloat" onclick="toggleDisplayNotice('notice-fade');" >Ok</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="modal-fade" id="field-fade" onclick="toggleDisplayNotice('field-fade');" >
+	<div class="notice" onclick="event.stopPropagation()">
+		<div class="modal-content">
+			<span id="field-text"></span><br />
+			<input class="lightField smallField" />
+			<div class="textCenterer">
+				<div class="darkBtn smallBtn noFloat" onclick="toggleDisplayNotice('field-fade');" >Ok</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+		<footer>
+			<div class="wrapper960px">
+				<div class="third " >
+					Наши контакты: <br />
+					contact@veneumproject.com
+				</div>
+				
+				<div class="third " >
+					<ul class="" >
+						<li><a href="/" >Главная</a></li>
+						<li><a href="/faq" >FAQ</a></li>
+						<li><a href="/rules" >Правила</a></li>
+						<li><a href="/help" >Поддержка</a></li>
+					</ul>
+				</div>
+				
+				<div class="third " >
+					<img src="template-1/assets/images/ssl.png" width="300" >
+					<img src="template-1/assets/images/payment-systems.png" width="300" >
+				</div>
+			</div>
+		</footer>
+	</body>
+
+</html>

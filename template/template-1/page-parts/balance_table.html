@@ -1,0 +1,97 @@
+
+						<div class="wrapper">
+							<h3>Мой баланс</h3>
+							<div class="darkBtn smallBtn" onclick="showTopUpTheBalanceModal();" >Пополнить</div>
+							<div class="darkBtn smallBtn" onclick="showWithdrawalModal();" >Заказать выплату</div>
+						</div>
+						<table cellspacing='0' >
+							<thead>
+								<tr> <th>Валюта</th> <th>Сумма</th> </tr>
+							</thead>
+%balances%
+						</table>
+
+<script>
+	window.ComissionPercent = "%comission%";
+
+	function showTopUpTheBalanceModal() {
+		toggleModalLoading('topUpTheBalance_modal-fade');
+		toggleDisplayModal('topUpTheBalance_modal-fade');
+		
+		window.CustomSelect.id = "topUpTheBalance_payment-system_select";
+		window.CustomSelect.name = "payment_system";
+		getData(
+			"/template-1/ajax/getPaymentSystems.php", 
+			myBind(window.CustomSelect.fill, window.CustomSelect)
+		);
+		
+		toggleModalLoading('topUpTheBalance_modal-fade');
+	}
+	
+	function showWithdrawalModal() {
+		toggleModalLoading('withdrawal_modal-fade');
+		toggleDisplayModal('withdrawal_modal-fade');
+		
+		window.CustomSelect.id = "withdrawal_wallet_select";
+		window.CustomSelect.name = "wallet";
+		getData(
+			"/template-1/ajax/getWallets.php", 
+			myBind(window.CustomSelect.fill, window.CustomSelect)
+		);
+		
+		toggleModalLoading('withdrawal_modal-fade');
+	}
+</script>
+
+<div class="modal-fade" id="topUpTheBalance_modal-fade" onclick="toggleDisplayModal('topUpTheBalance_modal-fade');" >
+	<div class="modal" onclick="event.stopPropagation()">
+		<div class="modal-close" onclick="toggleDisplayModal('topUpTheBalance_modal-fade');">&nbsp;✕&nbsp;</div>
+		<div class="modal-header" ><h3>Пополнить баланс</h3></div>
+		<div class="wrapper textCenterer modal-loading"><img src="template-1/assets/images/loading.png" /></div>
+		<div class="modal-content" style="display: none;">
+			<div class="modal-content-wrapper">
+				<form id="checkDonate_form" onsubmit="handlePaymentSystem(this); return false;">
+					<div class="textCenterer">
+						
+						<label class="customSelect" id="topUpTheBalance_payment-system_select" placeholder="Платежная система" > 
+						</label>
+						
+						<br />
+						
+						<button class="darkBtn smallBtn noFloat" type="submit" >Пополнить</button>
+						
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="modal-fade" id="withdrawal_modal-fade" onclick="toggleDisplayModal('withdrawal_modal-fade');" >
+	<div class="modal" onclick="event.stopPropagation()">
+		<div class="modal-close" onclick="toggleDisplayModal('withdrawal_modal-fade');">&nbsp;✕&nbsp;</div>
+		<div class="modal-header" ><h3>Выплата</h3></div>
+		<div class="wrapper textCenterer modal-loading"><img src="template-1/assets/images/loading.png" /></div>
+		<div class="modal-content" style="display: none;">
+			<div class="modal-content-wrapper">
+				<form id="checkDonate_form" method="post" onsubmit="return checkWithdrawalForm(this);">
+				
+					<div class="textCenterer">
+						<input type="hidden" name="do" value="addWithdrawalBid" />
+						
+						<label class="customSelect" id="withdrawal_wallet_select" placeholder="Кошелек" > 
+						</label>
+						
+						<input type="text" class="lightField smallField" name="sum" placeholder="Сумма" />
+					</div>
+					
+					<div class="textCenterer">
+						
+						<button class="darkBtn smallBtn noFloat" type="submit" >Подать заявку</button>
+						
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

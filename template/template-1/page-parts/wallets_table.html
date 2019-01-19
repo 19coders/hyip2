@@ -1,0 +1,65 @@
+
+						<div class="wrapper">
+							<h3>Мои кошельки</h3>
+							<div class="darkBtn smallBtn" onclick="toggleDisplayModal('walletsSettings_modal-fade');setWallets('walletsSettings_modal-fade');" >Настройки кошельков</div>
+							<div class="darkBtn smallBtn" onclick="showAddWalletModal()" >Добавить кошелек</div>
+						</div>
+						<table cellspacing='0' >
+							<thead>
+								<tr> <th>Платежная система</th> <th>Кошелек</th> </tr>
+							</thead>
+%wallets%
+						</table>
+
+<script>
+	function showAddWalletModal() {
+		toggleModalLoading('addWallet_modal-fade');
+		toggleDisplayModal('addWallet_modal-fade');
+		
+		window.CustomSelect.id = "addWallet_payment-system_select";
+		window.CustomSelect.name = "payment_system";
+		getData(
+			"/template-1/ajax/getPaymentSystems.php", 
+			myBind(window.CustomSelect.fill, window.CustomSelect)
+		);
+		
+		toggleModalLoading('addWallet_modal-fade');
+	}
+</script>
+
+<div class="modal-fade" id="addWallet_modal-fade" onclick="toggleDisplayModal('addWallet_modal-fade');" >
+	<div class="modal" onclick="event.stopPropagation()">
+		<div class="modal-close" onclick="toggleDisplayModal('addWallet_modal-fade');">&nbsp;✕&nbsp;</div>
+		<div class="modal-header" ><h3>Добавить кошелек</h3></div>
+		<div class="wrapper textCenterer modal-loading"><img src="template-1/assets/images/loading.png" /></div>
+		<div class="modal-content" style="display: none;">
+			<div class="modal-content-wrapper">
+				<form action="" method="POST" id="addWallet_form" onsubmit="return checkAddWalletForm(this)" >
+					<input type="hidden" name="do" value="addWallet" />
+					<div class="textCenterer">
+						<label class="customSelect" id="addWallet_payment-system_select" placeholder="Платежная система" > 
+
+						</label>
+						
+						<input type="text" name="wallet" class="lightField smallField" placeholder="Кошелек" />
+					</div>
+					
+					<div class="textCenterer">
+						<button class="darkBtn smallBtn noFloat" type="submit" >Добавить кошелек</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="modal-fade" id="walletsSettings_modal-fade" onclick="toggleDisplayModal('walletsSettings_modal-fade');" >
+	<div class="modal" onclick="event.stopPropagation()">
+		<div class="modal-close" onclick="toggleDisplayModal('walletsSettings_modal-fade');">&nbsp;✕&nbsp;</div>
+		<div class="modal-header" ><h3>Настройки кошельков</h3></div>
+		<div class="wrapper textCenterer modal-loading"><img src="template-1/assets/images/loading.png" /></div>
+		<div class="modal-content">
+			
+		</div>
+	</div>
+</div>

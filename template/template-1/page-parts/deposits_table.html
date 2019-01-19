@@ -1,0 +1,53 @@
+
+						<div class="wrapper">
+							<h3>Мои депозиты</h3> 
+							<div class="darkBtn smallBtn" onclick="showDepositsModal();" >Новый депозит</div>
+						</div>
+						<table cellspacing='0' >
+							<thead>
+								<tr> <th>План</th> <th>Сумма депозита</th> <th>Сумма возврата</th> <th>Дата начала</th> <th>Дата окончания</th> <th>Следующее начисление</th> </tr>
+							</thead>
+%deposits%
+						</table>
+
+<script>
+	function showDepositsModal() {
+		toggleModalLoading('deposits_modal-fade');
+		toggleDisplayModal('deposits_modal-fade');
+		
+		window.CustomSelect.id = "plan_select";
+		window.CustomSelect.name = "plan";
+		getData(
+			"/template-1/ajax/getPlans.php",
+			myBind(window.CustomSelect.fill, window.CustomSelect)
+		);
+		
+		toggleModalLoading('deposits_modal-fade');
+	}
+</script>
+
+<div class="modal-fade" id="deposits_modal-fade" onclick="toggleDisplayModal('deposits_modal-fade');" >
+	<div class="modal" onclick="event.stopPropagation()">
+		<div class="modal-close" onclick="toggleDisplayModal('deposits_modal-fade');">&nbsp;✕&nbsp;</div>
+		<div class="modal-header" ><h3>Новый депозит</h3></div>
+		<div class="wrapper textCenterer modal-loading"><img src="template-1/assets/images/loading.png" /></div>
+		<div class="modal-content" style="display: none;">
+			<form action="" method="POST" id="addDeposit_form" onsubmit="return checkAddDepositForm(this)" >
+				<div class="textCenterer">
+					<input type="hidden" name="do" value="addDeposit" />
+					
+					<label class="customSelect" placeholder="План" id="plan_select">
+					
+					</label>
+					
+					<input type="text" class="lightField smallField" name="sum" placeholder="Сумма депозита" />
+				</div>
+				
+				<div class="textCenterer">
+					<button class="darkBtn smallBtn noFloat" type="submit" >Создать депозит</button>
+				</div>
+				
+			</form>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,61 @@
+body {
+	width: 100%;
+	height: 100%;
+	
+	margin: 0;
+	padding: 0;
+	
+	background-image: url('../img/panel-bg.jpg');
+	background-position: center;
+	background-size: cover;
+	background-attachment: fixed;
+	
+	font-family: Tahoma, Arial, Verdana;
+	
+	color: #fff;
+}
+
+.horizontal-centerer {
+	display: flex;
+	flex-wrap: wrap; 
+	flex-direction: row; 
+	justify-content: center;
+}
+
+.vertical-centerer {
+	display: flex;
+	flex-wrap: wrap; 
+	flex-direction: row; 
+	align-items: center;
+}
+
+.wrapper.wrapper--installpage {
+	background-color: rgba(0, 0, 0, .5);
+}
+
+.field {
+	height: 25px;
+	width: 100%;
+	border: 1px solid white;
+	outline: 0;
+	padding: 5px;
+	color: white;
+	background-color: transparent;
+}
+
+.button.button--install {
+	margin: auto;
+}
+.button {
+	display: inline-block;
+	background-color: transparent;
+	color: white;
+	border: 1px solid white;
+	outline: 0;
+	cursor: pointer;
+	/* padding: 3px; */
+	transition: background-color .5s ease-out 0s;
+}
+.button { height: 25px; }
+.button:hover { background-color: #BBBBBB; }
+.button:active { box-shadow: inset 0 0 10px rgba(0,0,0,0.5); }

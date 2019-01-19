@@ -1,0 +1,7 @@
+AddDefaultCharset UTF-8
+
+RewriteEngine On
+RewriteBase /
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ template/index.php/$1 [QSA,L]

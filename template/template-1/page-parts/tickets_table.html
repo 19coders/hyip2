@@ -1,0 +1,31 @@
+
+						<div class="wrapper">
+							<h3>Тикеты</h3>
+							<div class="darkBtn smallBtn" onclick="toggleDisplayModal('newTicket_modal-fade');" >Новый тикет</div>
+						</div>
+						<table cellspacing='0' >
+							<thead>
+								<tr> <th>Дата</th> <th>Тикет</th> <th>Статус</th> </tr>
+							</thead>
+%tickets%
+						</table>
+
+<div class="modal-fade" id="newTicket_modal-fade" onclick="toggleDisplayModal('newTicket_modal-fade');" >
+	<div class="modal" onclick="event.stopPropagation()">
+		<div class="modal-close" onclick="toggleDisplayModal('newTicket_modal-fade');">&nbsp;✕&nbsp;</div>
+		<div class="modal-header" ><h3>Новый тикет</h3></div>
+		<div class="wrapper textCenterer modal-loading" style="display: none;"><img src="template-1/assets/images/loading.png" /></div>
+		<div class="modal-content">
+			<form action="" method="POST" id="addTicket_form" onsubmit="return checkAddTicketForm(this)">
+				<input type="hidden" name="do" value="addTicket" />
+					
+				<input type="text" name="title" class="lightField bigField" placeholder="Заголовок" />
+				<textarea class="lightField bigField" name="text" placeholder="Опишите вашу проблему" ></textarea>
+				
+				<div class="textCenterer" >
+					<button class="darkBtn smallBtn noFloat" type="submit" >Отправить</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>

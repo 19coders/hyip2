@@ -1,0 +1,38 @@
+	h1 { grid-area: h1; }
+	h2 { grid-area: h2; }
+	.settings { grid-area: settings; }
+	.button { grid-area: button; }
+	.button-wrapper { grid-area: button-wrapper; }
+	.settings-content { grid-area: settings-content; }
+	#settings_mysql { grid-area: settings_mysql; }
+	#settings_admpanel { grid-area: settings_admpanel; }
+
+.grid {
+	display: grid;
+}
+
+div#main-wrapper.installpage > .grid {
+	grid-template-columns: 1fr;
+	grid-template-rows: auto auto auto auto;
+	grid-gap: 5px 0;
+	grid-template-areas: "h1"
+						 "settings_mysql"
+						 "settings_admpanel"
+						 "button-wrapper"; 
+}
+
+
+div#main-wrapper.settingspage #content .grid.mysqlGrid {
+	grid-template-columns: 500px;
+	grid-template-rows: auto;
+	grid-template-areas: "settings_mysql";
+}
+div#main-wrapper.settingspage #content .grid.mysettingsGrid {
+	grid-template-columns: 500px;
+	grid-template-rows: auto;
+	grid-template-areas: "settings_admpanel";
+}
+
+.settings-content{
+	grid-template-columns: 1fr 1fr;
+}
